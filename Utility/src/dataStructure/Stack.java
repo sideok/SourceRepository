@@ -1,6 +1,5 @@
 package dataStructure;
 
-import java.lang.reflect.Array;
 /**
  * Stack sample 
  * @author SIDeok (2019.10.14)
@@ -8,16 +7,14 @@ import java.lang.reflect.Array;
  */
 public class Stack<E> {
 	
-	private E[] stack = null;
+	private Object[] stack = null;
 	private int top = 0;
 	/**
 	 * Create a stack
 	 * @param len : size of stack
-	 * @param cls : type of Element
 	 * @throws Exception 
 	 */
-	@SuppressWarnings("unchecked")
-	public Stack(int len, Class<E> cls) {
+	public Stack(int len) {
 		try {
 			if(len <= 0) {
 				throw new Exception("size is greater than 0");
@@ -26,7 +23,7 @@ public class Stack<E> {
 			e.printStackTrace();
 		}
 		
-		this.stack = (E[]) Array.newInstance(cls, len);
+		this.stack = new Object[len];
 		this.top = 0;
 	}
 
@@ -63,6 +60,7 @@ public class Stack<E> {
 	 * pop a element
 	 * @return process result
 	 */
+	@SuppressWarnings("unchecked")
 	public E pop() {
 		E rtnE = null;
 		try {
@@ -70,7 +68,7 @@ public class Stack<E> {
 				throw new Exception("already this stack is empty.");
 			
 			this.top -= 1;
-			rtnE = this.stack[this.top];
+			rtnE = (E)this.stack[this.top];
 			this.stack[this.top] = null;
 			
 		} catch (Exception e) {
