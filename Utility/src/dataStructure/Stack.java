@@ -17,9 +17,13 @@ public class Stack<E> {
 	 * @throws Exception 
 	 */
 	@SuppressWarnings("unchecked")
-	public Stack(int len, Class<E> cls) throws Exception {
-		if(len <= 0) {
-			throw new Exception("size is greater than 0");
+	public Stack(int len, Class<E> cls) {
+		try {
+			if(len <= 0) {
+				throw new Exception("size is greater than 0");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		this.stack = (E[]) Array.newInstance(cls, len);
