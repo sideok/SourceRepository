@@ -46,7 +46,7 @@ public class Stack<E> {
 			if(this.top >= this.stack.length) 
 				throw new Exception("can`t be top length greater than this Stack size : " + this.stack.length);
 			
-			this.stack[this.top] = element;
+			this.stack[this.top] = (Object)element;
 			this.top += 1;
 			
 		} catch (Exception e) {
